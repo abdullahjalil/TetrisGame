@@ -306,7 +306,7 @@ var tetrisDiv = function(divContent) {
 		}
 		this.pasteTetrisShape();
 	};
-// this is what moving and pasting will call to remove the values of 1 to 0 
+// this is what moving and pasting will call to remove the values of 1 to 0
 	tetrisArray.removeTetrisShape = function() {
 		for (var i = 0; i < divs.next.side; i++) {
 			var yShape = this.currentTetrisPeice.y + i;
@@ -432,6 +432,7 @@ var tetrisDiv = function(divContent) {
 	};
 
 	tetrisGameBoard.resetGame = function() {
+		$("#backgroundMusic").get(0).play();
 		divs.container.removeEventListener("click", tetrisGameBoard.resetGame, false);
 		divs.container.addEventListener("keydown", tetrisGameBoard.keyPress, false);
 		divs.pauseGame.cell.innerHTML = divs.pauseGame.text[1];

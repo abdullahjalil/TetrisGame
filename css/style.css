@@ -1,7 +1,8 @@
-body {
+body, html {
 	font-family:Sans-Serif;
 	font-size: .85em;
 	background-color: #414647;
+)
 	color: #666666;
 }
 
@@ -32,6 +33,7 @@ h1 {
 	display: table-cell;
 	border: 2px solid #696969;
 	background-color: #333;
+	background: url('../images/background.gif');
 	position: inherit;
 	float: left;
 }

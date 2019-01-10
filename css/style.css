@@ -86,7 +86,9 @@ h1 {
 .shape {
 	width: 23px;
 	height: 23px;
-	background-image: url('../images/block.gif');
+	/* background-image: url('../images/block.gif'); */
+	background-color: #f7b7d6;
+	opacity: 0.5;
 	background-size: 23px 23px;
 	border: 1px solid transparent;
 	position: relative;

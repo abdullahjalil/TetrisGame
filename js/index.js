@@ -1,7 +1,7 @@
-window.onload = function() {
+$(document).ready(function(){
 	var cell = document.getElementById("tetrisDiv");
 	tetrisDiv(cell);
-};
+});
 
 var tetrisDiv = function(divContent) {
 	var divs = {
@@ -396,7 +396,7 @@ var tetrisDiv = function(divContent) {
 		divs.next.cell.className = "nextPeiceScreen";
 		userIntstructionDiv.appendChild(divs.next.cell);
 
-		divs.pauseGame.cell = document.createElement("div");
+		divs.pauseGame.cell = document.createElement("div")	;
 		divs.pauseGame.cell.className = "pauseWindow";
 		divs.pauseGame.cell.innerHTML = divs.pauseGame.text[0];
 		divContent.appendChild(divs.pauseGame.cell);

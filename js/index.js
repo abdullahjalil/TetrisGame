@@ -2,6 +2,15 @@ $(document).ready(function(){
 	var cell = document.getElementById("tetrisDiv");
 	tetrisDiv(cell);
 });
+var tetrisGameBoard = {};
+
+tetrisGameBoard.myScore = 0;
+
+tetrisGameBoard.dropSpeed = 1000;
+
+tetrisGameBoard.counter = null;
+
+tetrisGameBoard.isGamePaused = false;
 
 var tetrisDiv = function(divContent) {
 	var divs = {
@@ -272,7 +281,7 @@ var tetrisDiv = function(divContent) {
 			}
 		}
 	};
-
+// this is responsible for moving the shape by removing it and replicating it
 	tetrisArray.move = function(xPosition, yPosition) {
 		if (this.duplicateTetrisShape(xPosition, yPosition)) {
 			this.removeTetrisShape();
@@ -284,6 +293,8 @@ var tetrisDiv = function(divContent) {
 		return false;
 	};
 
+	//rotating the tetris shape is done in a similiar way but instead we use the arrays that have already been setup above
+	//rotating possibilities have already been included in the tetris array
 	tetrisArray.rotate = function() {
 		this.removeTetrisShape();
 		var previousPosition = this.currentTetrisPeice.setDirection;
@@ -295,7 +306,7 @@ var tetrisDiv = function(divContent) {
 		}
 		this.pasteTetrisShape();
 	};
-
+// this is what moving and pasting will call to remove the values of 1 to 0 
 	tetrisArray.removeTetrisShape = function() {
 		for (var i = 0; i < divs.next.side; i++) {
 			var yShape = this.currentTetrisPeice.y + i;
@@ -358,15 +369,7 @@ var tetrisDiv = function(divContent) {
 		}
 	};
 
-	var tetrisGameBoard = {};
 
-	tetrisGameBoard.myScore = 0;
-
-	tetrisGameBoard.dropSpeed = 1000;
-
-	tetrisGameBoard.counter = null;
-
-	tetrisGameBoard.isGamePaused = false;
 
 	tetrisGameBoard.setGame = function() {
 		divContent.className += " tetris";

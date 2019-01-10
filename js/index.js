@@ -19,7 +19,7 @@ var tetrisDiv = function(divContent) {
 		},
 		pauseGame: {
 			cell: null,
-			text: ["Start!", "Paused!", "You Lost!"]
+			text: ["Click to Start!", "Paused!", "You Lost!"]
 		}
 	};
 // this decides where the Shape will fall from its currently always being dropped from the middle

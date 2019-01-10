@@ -1,9 +1,13 @@
-body, html {
-	font-family:Sans-Serif;
+@font-face {
+	font-family: GenericMobile;
+	src: url('GenericMobileSystem.ttf');
+
+}
+body {
+	font-family:GenericMobile;
 	font-size: .85em;
 	background-color: #414647;
-)
-	color: #666666;
+
 }
 
 h1 {
@@ -41,10 +45,10 @@ h1 {
 .userInstruction {
 	width: 150px;
 	height: 350px;
-	color: #696969;
+	color: #fafafa;
 	background-color: #4286f4;
 	line-height: 25px;
-	font-family: Arial;
+	font-family: GenericMobile;
 	font-weight: bold;
 	font-size: 18px;
 	text-align: center;
@@ -66,11 +70,11 @@ h1 {
 .pauseWindow {
 	width: 150px;
 	height: 50px;
-	background-color: #4286f4;
-	color: #696969;
-	font-family: sans-serif;
+	background-color: transparent;
+	color: #FAFAFA;
+	font-family: GenericMobile;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 25px;
 	text-align: center;
 	padding-top: 25px;
 	position: relative;
@@ -81,8 +85,8 @@ h1 {
 .shape {
 	width: 23px;
 	height: 23px;
-	background-color: #e53e19;
-	border: 1px solid #333;
+	background-image: url('../images/block.gif');
+	border: 1px solid transparent;
 	position: relative;
 	float: left;
 }

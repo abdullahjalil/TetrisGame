@@ -2,17 +2,24 @@
 
 This project will entail me creating a tetris game using javascript, html and css
 
+GitHub Link: https://abdullahjalil.github.io/TetrisGame/
+
 ## Project Plan
 
 ### Folder structure
 
 ```
-+-- project-one
++-- TetrisGame
 |	+--js
-|		--main.js
+|		--app.js
 |	+--css
 |		--style.css
+|  	+--music
+|.    	--Tetris.mp3
 |	+--images
+|		--background.gif
+|     	--block.gif
+|     	--wallpaper.gif
 |	--index.html
 ```
 
@@ -23,11 +30,47 @@ This project will entail me creating a tetris game using javascript, html and cs
 * Upload it to Git continuously throughtout the project
 * Have the project completed in a Weeks time
 
+### Implementation
+
+* HTML5
+* JavaScript
+* CSS3
+* JQUERY
+
 ### Design 
+
+##### Shapes
 	[0, 0, 0, 0],
 	[0, 0, 0, 0],
 	[0, 0, 0, 0],
 	[0, 0, 0, 0]
+	
+##### GameBoard
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	
+#### Game Structure
+
+Create a Scoring system which adds 100 everytime a line break
+
+
+
+	
+
 
 
 ### Task Diary

@@ -319,7 +319,7 @@ var tetrisDiv = function(divContent) {
 			}
 		}
 	};
-
+// this function takes the current tetris array and repositions the shape to the new position on both x and y
 	tetrisArray.duplicateTetrisShape = function(xPosition, yPosition) {
 		for (var i = 0; i < divs.next.side; i++) {
 			var yShape = this.currentTetrisPeice.y + yPosition + i;
@@ -354,7 +354,7 @@ var tetrisDiv = function(divContent) {
 		}
 		return true;
 	};
-
+// pasting the shape in to place
 	tetrisArray.pasteTetrisShape = function() {
 		for (var i = 0; i < divs.next.side; i++) {
 			var yShape = this.currentTetrisPeice.y + i;
@@ -370,7 +370,7 @@ var tetrisDiv = function(divContent) {
 	};
 
 
-
+// creating the divs to contain the game
 	tetrisGameBoard.setGame = function() {
 		divContent.className += " tetris";
 
@@ -427,13 +427,15 @@ var tetrisDiv = function(divContent) {
 		}
 
 
-
-		divs.container.addEventListener("click", tetrisGameBoard.resetGame, false);
+// this is a event addEventListener to check the user clikcing on gameBoard to initiliaze the startGame function
+// set to false by default
+		divs.container.addEventListener("click", tetrisGameBoard.startGame, false);
 	};
-
-	tetrisGameBoard.resetGame = function() {
+// function ot start the game once the player click outside div, and thne hides the  pauseGame div
+	tetrisGameBoard.startGame = function() {
+		// plays music as soon as this function runs
 		$("#backgroundMusic").get(0).play();
-		divs.container.removeEventListener("click", tetrisGameBoard.resetGame, false);
+		divs.container.removeEventListener("click", tetrisGameBoard.startGame, false);
 		divs.container.addEventListener("keydown", tetrisGameBoard.keyPress, false);
 		divs.pauseGame.cell.innerHTML = divs.pauseGame.text[1];
 		divs.pauseGame.cell.style.visibility = "hidden";
@@ -446,8 +448,8 @@ var tetrisDiv = function(divContent) {
 		}
 
 		tetrisArray.chooseNext();
-		tetrisArray.chooseNext();
 
+// drop speed set to every 1 second
 		tetrisGameBoard.dropSpeed = 1000;
 		tetrisGameBoard.counter = setInterval(tetrisGameBoard.move, tetrisGameBoard.dropSpeed);
 	};
@@ -524,11 +526,13 @@ var tetrisDiv = function(divContent) {
 		}
 		tetrisArray.chooseNext();
 	};
-
+// should display pauseGame when game is over and display the second text index in the array
 	tetrisGameBoard.gameOver = function() {
 		clearInterval(this.counter);
 		divs.pauseGame.cell.innerHTML = divs.pauseGame.text[2];
+// sets the div to visible
 		divs.pauseGame.cell.style.visibility = "visible";
+// get rid of the event listerners for keyPress so that the player can no longer move peices
 		divs.container.removeEventListener("keydown", tetrisGameBoard.keyPress, false);
 		tetrisGameBoard.animateGameOver();
 	};
@@ -538,7 +542,7 @@ var tetrisDiv = function(divContent) {
 	tetrisGameBoard.animateGameOver = function() {
 		var i = divs.tetrisGameBoard.arrayRow ;
 		var j = 0;
-		divs.container.addEventListener("click", tetrisGameBoard.resetGame, false);
+		divs.container.addEventListener("click", tetrisGameBoard.startGame, false);
 		(function() {
 			if (i >= 0) {
 				divs.tetrisGameBoard.shapes[i][j].setDisplay(1);
@@ -563,7 +567,8 @@ var tetrisDiv = function(divContent) {
 		}
 		tetrisGameBoard.isGamePaused = !tetrisGameBoard.isGamePaused;
 	};
-
+// keyPress functions
+// done using switch statements with cases matching keyCode
 	tetrisGameBoard.keyPress = function(e) {
 		e.preventDefault();
 

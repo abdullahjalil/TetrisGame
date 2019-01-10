@@ -393,7 +393,7 @@ var tetrisDiv = function(divContent) {
 		userIntstructionDiv.innerHTML += "<br/><br/><br/>NEXT PEICE:<br/><br/>";
 
 		divs.next.cell = document.createElement("div");
-		divs.next.cell.className = "nextPeiceScreens";
+		divs.next.cell.className = "nextPeiceScreen";
 		userIntstructionDiv.appendChild(divs.next.cell);
 
 		divs.pauseGame.cell = document.createElement("div");

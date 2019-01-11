@@ -63,14 +63,22 @@ GitHub Link: https://abdullahjalil.github.io/TetrisGame/
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	
+### Concept
+
+Display each block with a number 1 in the array and make each shape serparetly
+with every rotation posobility which can be called later on the code in a Rotate() function. 
+	
 #### Game Structure
 
 Create a Scoring system which adds 100 everytime a line break
+Randomize what Tetris shape drops from the top of a div using Math.random
+Try implementing some music in to the game
+* Include an instruction section explaining how to play the game.
+* Implement and game over message
+* Use CSS to style to provide good user experience
+* Host the Game online using Github
 
-
-
-	
-
+### Constrols
 
 
 ### Task Diary
@@ -82,6 +90,13 @@ Create a Scoring system which adds 100 everytime a line break
 |9th January 2018                            |  Basics of game functionality completed,iterate arrays for each Tetris shape and implement falling function with some additional asthetics. added the scoring system, attempted a leaderboard however i was unsuccessful. Added a rule so that when the player reaches a 1000 points it increase the drop speed adding an element of difficulty. (still having problems with rotation need to look at example online)       |       Yes             |   
 | 10th Janaury 2018          | Completed rotation function, added some asthetics(gifs and images), attempted to create a animation for endGame but could not finish. added a display to show the next tetris peice to make it easier as the next tetris peice was always random instead of using tetris' original logic.         |  Yes                  |   
 
+### Bugs
 
+* Currently the first peice that drops does not appear until you press the keybinds, however after that first peice it runs as it should.
+* The Tetris peices can be moved when they reach the bottom for a second due to the interval needed for each peice to drop.
 
+##Further Development Ideas
 
+1. Adding a leaderboard for scores
+2. creating a function to display different coloured peices 
+3. Adding a two player function

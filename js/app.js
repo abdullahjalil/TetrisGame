@@ -71,7 +71,7 @@ var tetrisDiv = function(divContent) {
 	};
 // this 2 dimensional array contians all the shapes and possible rotations
 	tetrisArray.matrix = [
-		[ // I
+		[ // I Shape
 			[
 				[0, 0, 1, 0],
 				[0, 0, 1, 0],
@@ -97,7 +97,7 @@ var tetrisDiv = function(divContent) {
 				[0, 0, 0, 0]
 			]
 		],
-		[ // J
+		[ // J Shape
 			[
 				[0, 0, 1, 0],
 				[0, 0, 1, 0],
@@ -123,7 +123,7 @@ var tetrisDiv = function(divContent) {
 				[0, 0, 0, 0]
 			]
 		],
-		[ // L
+		[ // L Shape
 			[
 				[0, 1, 0, 0],
 				[0, 1, 0, 0],
@@ -149,7 +149,7 @@ var tetrisDiv = function(divContent) {
 				[0, 0, 0, 0]
 			]
 		],
-		[ // O
+		[ // O Shape
 			[
 				[0, 0, 0, 0],
 				[0, 1, 1, 0],
@@ -175,7 +175,7 @@ var tetrisDiv = function(divContent) {
 				[0, 0, 0, 0]
 			]
 		],
-		[ // S
+		[ // S Shape
 			[
 				[0, 1, 0, 0],
 				[0, 1, 1, 0],
@@ -201,7 +201,7 @@ var tetrisDiv = function(divContent) {
 				[0, 0, 0, 0]
 			]
 		],
-		[ // T
+		[ // T Shape
 			[
 				[0, 0, 0, 0],
 				[0, 1, 0, 0],
@@ -227,7 +227,7 @@ var tetrisDiv = function(divContent) {
 				[0, 1, 0, 0]
 			]
 		],
-		[ // Z
+		[ // Z Shape
 			[
 				[0, 0, 1, 0],
 				[0, 1, 1, 0],
@@ -354,7 +354,7 @@ var tetrisDiv = function(divContent) {
 		}
 		return true;
 	};
-// pasting the shape in to place
+// moving the shape in to the new place
 	tetrisArray.pasteTetrisShape = function() {
 		for (var i = 0; i < divs.next.side; i++) {
 			var yShape = this.currentTetrisPeice.y + i;
@@ -370,7 +370,7 @@ var tetrisDiv = function(divContent) {
 	};
 
 
-// creating the divs to contain the game
+// creating the divs to contain the game content
 	tetrisGameBoard.setGame = function() {
 		divContent.className += " tetris";
 
@@ -397,13 +397,16 @@ var tetrisDiv = function(divContent) {
 
 		divs.next.cell = document.createElement("div");
 		divs.next.cell.className = "nextPeiceScreen";
+// appending the div with the the next array shape
 		userIntstructionDiv.appendChild(divs.next.cell);
 
+// pause game menu div
 		divs.pauseGame.cell = document.createElement("div")	;
 		divs.pauseGame.cell.className = "pauseWindow";
 		divs.pauseGame.cell.innerHTML = divs.pauseGame.text[0];
 		divContent.appendChild(divs.pauseGame.cell);
 
+// sets the GameBoard and fills every row with block
 		for (var i = 0; i < divs.tetrisGameBoard.arrayRow; i++) {
 			divs.tetrisGameBoard.shapes[i] = [];
 			for (var j = 0; j < divs.tetrisGameBoard.arraycolumn; j++) {
@@ -434,9 +437,9 @@ var tetrisDiv = function(divContent) {
 // function ot start the game once the player click outside div, and thne hides the  pauseGame div
 	tetrisGameBoard.startGame = function() {
 		// plays music as soon as this function runs
-		$("#backgroundMusic").get(0).play();
+		var music = $("#backgroundMusic").get(0).play();
 		divs.container.removeEventListener("click", tetrisGameBoard.startGame, false);
-		divs.container.addEventListener("keydown", tetrisGameBoard.keyPress, false);
+		divs.container.addEventListener("keydown", tetrisGameBoard.keyPress, true);
 		divs.pauseGame.cell.innerHTML = divs.pauseGame.text[1];
 		divs.pauseGame.cell.style.visibility = "hidden";
 		tetrisGameBoard.setScore(0);
@@ -485,7 +488,7 @@ var tetrisDiv = function(divContent) {
 				}
 			}
 		}
-
+// if number of completed lines is 1 then 1 * 100 so score == 100...
 		if (completeLines > 1) {
 			this.addScore(100 * completeLines);
 		}
@@ -502,6 +505,7 @@ var tetrisDiv = function(divContent) {
 
 	tetrisGameBoard.setScore = function(newScore) {
 		this.myScore = newScore;
+		// stores the new score in this div
 		divs.container.getElementsByClassName("scoreLine")[0].innerHTML = newScore;
 	};
 
@@ -509,9 +513,10 @@ var tetrisDiv = function(divContent) {
 		var oldScore = this.myScore;
 		var newScore = oldScore + scoreToAdd;
 		this.setScore(newScore);
-		// this checks if the score is 500 then the drop speed increases
+		// if dropspeed is greater than 100 and score is 500
 		if (tetrisGameBoard.dropSpeed > 100 && (Math.floor(newScore / 500) > Math.floor(oldScore / 500))) {
-			tetrisGameBoard.dropSpeed -= 10;
+			// once score has reached 500 increase the drop speed 
+			tetrisGameBoard.dropSpeed -= 500;
 			clearInterval(this.counter);
 			tetrisGameBoard.counter = setInterval(tetrisGameBoard.move, tetrisGameBoard.dropSpeed);
 		}
@@ -556,8 +561,8 @@ var tetrisDiv = function(divContent) {
 			}
 		})();
 	};
-
-	tetrisGameBoard.pauseGame = function() {
+// this function checks if the ame is paused and if it is then the pauseGame div is set to visible
+	tetrisGameBoard.pauseGame = function pauseGame() {
 		if (tetrisGameBoard.isGamePaused) {
 			divs.pauseGame.cell.style.visibility = "hidden";
 			tetrisGameBoard.counter = setInterval(tetrisGameBoard.move, tetrisGameBoard.dropSpeed);
